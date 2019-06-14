@@ -3,21 +3,21 @@
   <head>
     <meta charset=utf-8>
     <title>Help me choose..</title>
-  </head>
-  <link href="./main.css" rel="stylesheet">
+  <link href="./main.css" rel="stylesheet" type="text/css">
+</head>
   <body>
     <div>
       <img src="KATT.png" height="400" width="450">
     </div>
-    <h1 style="font-family: ;">Help me <word style="color:pink;">choose</word> between..</h1>
+    <h1>Help me <word style="color: white;">choose</word> between..</h1>
     <div class="inputSection">
       <div class="inputs">
-        <input placeholder="Something"></input>
+        <input placeholder=" Something"></input>
     </div>
     <button class="addOption">Add</button>
   </div>
   <div class="resultSection"></div>
-  <button>Go!</button>
+  <button class="submit">GO!</button>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script>
@@ -27,8 +27,20 @@
       var add_option = function() {
         $('.inputs').append('<input></input>')
       }
-
     $('.addOption').click(add_option)
+
+    var options = []
+    var submit = function() {
+       $('.inputSection').hide()
+       $('.resultSection').css('display', 'flex')
+        $('input').each(function() {
+          options.push($(this).val())
+        })
+        var winner = options[Math.floor(Math.random() * options.length)]
+        console.log(winner)
+        $('.resultSection').text(winner)
+    }
+    $('.submit').click(submit)
   })
     </script>
   </body>
